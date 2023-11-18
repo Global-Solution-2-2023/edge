@@ -1,0 +1,373 @@
+[
+    {
+        "id": "76b2762011fb5b40",
+        "type": "tab",
+        "label": "GlobalSolution2",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "b42471a62d4eb3bf",
+        "type": "mqtt in",
+        "z": "76b2762011fb5b40",
+        "name": "BPM",
+        "topic": "fiap/LifeGame/bpm",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "6b10a7944ec5bd5d",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 270,
+        "y": 160,
+        "wires": [
+            [
+                "5415f7b6ce834f74",
+                "53bac3698ebe9cc7"
+            ]
+        ]
+    },
+    {
+        "id": "582d40b0aabfcc61",
+        "type": "debug",
+        "z": "76b2762011fb5b40",
+        "name": "debug bpm",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 670,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "93d48af4b05b10c4",
+        "type": "debug",
+        "z": "76b2762011fb5b40",
+        "name": "debug passos",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 700,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "066111863f41407e",
+        "type": "debug",
+        "z": "76b2762011fb5b40",
+        "name": "debug calorias",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 700,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "d25e6f667c017bc0",
+        "type": "mqtt in",
+        "z": "76b2762011fb5b40",
+        "name": "PASSOS",
+        "topic": "fiap/LifeGame/passoskm",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "6b10a7944ec5bd5d",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 280,
+        "y": 360,
+        "wires": [
+            [
+                "ab0fda60657cd74f",
+                "6e71fe6ad94125e5"
+            ]
+        ]
+    },
+    {
+        "id": "f0cf3c5ce8f8671e",
+        "type": "mqtt in",
+        "z": "76b2762011fb5b40",
+        "name": "CALORIA",
+        "topic": "fiap/LifeGame/calorias",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "6b10a7944ec5bd5d",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 280,
+        "y": 620,
+        "wires": [
+            [
+                "4f9053eb372511d1",
+                "ec613dd1f6690046"
+            ]
+        ]
+    },
+    {
+        "id": "5415f7b6ce834f74",
+        "type": "change",
+        "z": "76b2762011fb5b40",
+        "name": "bpm",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.bpm",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 470,
+        "y": 120,
+        "wires": [
+            [
+                "582d40b0aabfcc61"
+            ]
+        ]
+    },
+    {
+        "id": "ab0fda60657cd74f",
+        "type": "change",
+        "z": "76b2762011fb5b40",
+        "name": "passos",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.traveledkm",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 480,
+        "y": 300,
+        "wires": [
+            [
+                "93d48af4b05b10c4"
+            ]
+        ]
+    },
+    {
+        "id": "4f9053eb372511d1",
+        "type": "change",
+        "z": "76b2762011fb5b40",
+        "name": "calorias",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.calories",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 480,
+        "y": 560,
+        "wires": [
+            [
+                "066111863f41407e"
+            ]
+        ]
+    },
+    {
+        "id": "0a5ad1d29bd67b83",
+        "type": "mqtt out",
+        "z": "76b2762011fb5b40",
+        "name": "TagoBPM",
+        "topic": "tago/data/post",
+        "qos": "0",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "0e3aae2a597f0cab",
+        "x": 680,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "5154222d37f694ba",
+        "type": "mqtt out",
+        "z": "76b2762011fb5b40",
+        "name": "TagoPassos",
+        "topic": "tago/data/post",
+        "qos": "0",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "0e3aae2a597f0cab",
+        "x": 710,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "dcb8250c9d460e99",
+        "type": "mqtt out",
+        "z": "76b2762011fb5b40",
+        "name": "Tagocalorias",
+        "topic": "tago/data/post",
+        "qos": "0",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "0e3aae2a597f0cab",
+        "x": 730,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "53bac3698ebe9cc7",
+        "type": "function",
+        "z": "76b2762011fb5b40",
+        "name": "BPM_Function",
+        "func": "var currentDate = new Date();\n\nvar A = {\n    payload: {\n        \"variable\": \"BPM\",\n        \"value\": msg.payload.bpm.toString()\n    }\n};\n\nreturn A;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 180,
+        "wires": [
+            [
+                "0a5ad1d29bd67b83"
+            ]
+        ]
+    },
+    {
+        "id": "6e71fe6ad94125e5",
+        "type": "function",
+        "z": "76b2762011fb5b40",
+        "name": "Travel_Function",
+        "func": "var currentDate = new Date();\n\nvar B = {\n    payload: {\n        \"variable\": \"DistanciaPercorrida\",\n        \"unit\": \"Km\",\n        \"value\": msg.payload.traveledkm.toString()\n    }\n};\n\nreturn B;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 500,
+        "y": 380,
+        "wires": [
+            [
+                "5154222d37f694ba"
+            ]
+        ]
+    },
+    {
+        "id": "ec613dd1f6690046",
+        "type": "function",
+        "z": "76b2762011fb5b40",
+        "name": "Calorie_Function",
+        "func": "var currentDate = new Date();\n\nvar C = {\n    payload: {\n        \"variable\": \"CaloriaGasta\",\n        \"unit\": \"Kcal\",\n        \"value\": msg.payload.calories.toString()\n    }\n};\n\nreturn C;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 510,
+        "y": 640,
+        "wires": [
+            [
+                "dcb8250c9d460e99"
+            ]
+        ]
+    },
+    {
+        "id": "6b10a7944ec5bd5d",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "mqtt-dashboard.com",
+        "port": "1883",
+        "clientid": "Utida",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "0e3aae2a597f0cab",
+        "type": "mqtt-broker",
+        "name": "TagoIOGS2",
+        "broker": "mqtt.tago.io",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    }
+]
